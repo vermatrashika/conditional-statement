@@ -1,0 +1,381 @@
+Scenario 1: Access Control
+You are developing a simple login system. Write a C++ program that prompts the user for a username
+and password. If both the username and password match predefined values, grant access.
+Otherwise, deny access.
+#include <iostream>
+#include <string>
+
+int main() {
+    std::string correctUsername = "admin";
+    std::string correctPassword = "password123";
+  std::string enteredUsername, enteredPassword;
+  std::cout << "Enter username: ";
+    std::cin >> enteredUsername;
+
+    std::cout << "Enter password: ";
+    std::cin >> enteredPassword;
+  if (enteredUsername == correctUsername && enteredPassword == correctPassword) 
+  {
+        std::cout << "Access granted. Welcome, " << correctUsername << "!" << std::endl;
+    } 
+    else 
+    {
+        std::cout << "Access denied. Incorrect username or password." << std::endl;
+    }
+
+    return 0;
+}
+Scenario 2: Membership Eligibility
+Create a program that checks if a user is eligible for a premium membership based on age and
+subscription status. If the user is at least 18 years old and has a valid subscription, provide access;
+otherwise, deny access.
+#include <iostream>
+
+int main()
+{
+    int minimumAge = 18;
+    bool hasValidSubscription = true;
+  int userAge;
+    std::cout << "Enter your age: ";
+    std::cin >> userAge;
+   if (userAge >= minimumAge && hasValidSubscription) 
+   {
+        std::cout << "Congratulations! You are eligible for premium membership." << std::endl;
+    }
+    else 
+    {
+        std::cout << "Sorry, you are not eligible for premium membership at this time." << std::endl;
+    }
+
+    return 0;
+}
+Scenario 3: Grade Classification
+Design a program that takes a student's numerical grade as input and outputs their corresponding
+letter grade. Use if-else statements to categorize the grades as 'A', 'B', 'C', 'D', or 'F'.
+#include <iostream>
+
+int main() 
+{
+    double numericalGrade;
+    std::cout << "Enter the student's numerical grade: ";
+    std::cin >> numericalGrade;
+  if (numericalGrade >= 90.0) 
+  {
+        std::cout << "Grade: A" << std::endl;
+    } 
+    else if (numericalGrade >= 80.0) 
+    {
+        std::cout << "Grade: B" << std::endl;
+    } 
+    else if (numericalGrade >= 70.0) 
+    {
+        std::cout << "Grade: C" << std::endl;
+    } 
+    else if (numericalGrade >= 60.0)
+    {
+        std::cout << "Grade: D" << std::endl;
+    } 
+    else 
+    {
+        std::cout << "Grade: F" << std::endl;
+    }
+
+    return 0;
+}
+Scenario 4: Shipping Charges
+Write a C++ program that calculates shipping charges based on the weight of a package. If the weight
+is less than or equal to 5 pounds, apply a flat rate; otherwise, charge an additional fee per pound for
+weights exceeding 5 pounds.
+#include <iostream>
+
+int main()
+{
+    const double FLAT_RATE = 10.0;
+    const double ADDITIONAL_RATE_PER_POUND = 2.0;
+  double packageWeight;
+    std::cout << "Enter the weight of the package in pounds: ";
+    std::cin >> packageWeight;
+ if (packageWeight <= 5.0)
+ {
+        std::cout << "Shipping charge: $" << FLAT_RATE << std::endl;
+    } 
+    else 
+    {
+        double additionalCharge = (packageWeight - 5.0) * ADDITIONAL_RATE_PER_POUND;
+        std::cout << "Shipping charge: $" << (FLAT_RATE + additionalCharge) << std::endl;
+    }
+
+    return 0;
+}
+Scenario 5: Discount Calculation
+You are working for an e-commerce platform. Implement a program that calculates the total cost of
+an order after applying discounts. If the order amount is greater than $50 and the user is a premium
+member, provide a 10% discount; otherwise, provide a 5% discount.
+#include <iostream>
+
+int main() {
+    const double PREMIUM_MEMBER_DISCOUNT = 0.10;
+    const double REGULAR_DISCOUNT = 0.05;
+    double orderAmount;
+    bool isPremiumMember;
+
+    std::cout << "Enter the order amount: $";
+    std::cin >> orderAmount;
+
+    std::cout << "Are you a premium member? (1 for Yes, 0 for No): ";
+    std::cin >> isPremiumMember;
+   double discountRate = (orderAmount > 50.0 && isPremiumMember) ? PREMIUM_MEMBER_DISCOUNT : REGULAR_DISCOUNT;
+    double discountAmount = orderAmount * discountRate;
+    double totalCost = orderAmount - discountAmount;
+  std::cout << "Order amount: $" << orderAmount << std::endl;
+    std::cout << "Discount applied: " << (discountRate * 100) << "%" << std::endl;
+    std::cout << "Discount amount: $" << discountAmount << std::endl;
+    std::cout << "Total cost after discount: $" << totalCost << std::endl;
+
+    return 0;
+}
+Scenario 6: Ticket Pricing
+Develop a program that determines the price of a movie ticket based on the age of the user and the
+time of the movie. If the user is a child (age <= 12), provide a discount. If the movie is a matinee
+(before 5 PM), apply an additional discount.
+#include <iostream>
+
+int main() 
+{
+    const double BASE_TICKET_PRICE = 10.0;
+    const double CHILD_DISCOUNT = 0.5;
+    const double MATINEE_DISCOUNT = 0.2;
+    int userAge;
+    char movieTime;
+
+    std::cout << "Enter your age: ";
+    std::cin >> userAge;
+
+    std::cout << "Enter the movie time (M for matinee, E for evening): ";
+    std::cin >> movieTime;
+  double ticketPrice = BASE_TICKET_PRICE;
+  if (userAge <= 12) 
+  {
+        ticketPrice *= (1.0 - CHILD_DISCOUNT);
+    }
+ if (toupper(movieTime) == 'M') 
+ {
+        ticketPrice *= (1.0 - MATINEE_DISCOUNT);
+    }
+   std::cout << "Ticket price: $" << ticketPrice << std::endl;
+
+    return 0;
+}
+**Scenario 7: Authentication System**
+Design a program for a secure system that requires two-factor authentication. The user needs to
+input both a valid username/password combination and a time-sensitive authentication code. Grant
+access only if both conditions are met.
+#include <iostream>
+
+int main() 
+{
+    const double BASE_TICKET_PRICE = 10.0;
+    const double CHILD_DISCOUNT = 0.5;
+    const double MATINEE_DISCOUNT = 0.2;
+    int userAge;
+    char movieTime;
+
+    std::cout << "Enter your age: ";
+    std::cin >> userAge;
+
+    std::cout << "Enter the movie time (M for matinee, E for evening): ";
+    std::cin >> movieTime;
+  double ticketPrice = BASE_TICKET_PRICE;
+  if (userAge <= 12) 
+  {
+        ticketPrice *= (1.0 - CHILD_DISCOUNT);
+    }
+ if (toupper(movieTime) == 'M') 
+ {
+        ticketPrice *= (1.0 - MATINEE_DISCOUNT);
+    }
+   std::cout << "Ticket price: $" << ticketPrice << std::endl;
+
+    return 0;
+}
+**Scenario 8: Voting Eligibility**
+
+Create a program that checks if a person is eligible to vote. The eligibility criteria include being at
+least 18 years old and not having a criminal record. Grant voting access only if both conditions are
+satisfied.
+#include <iostream>
+
+int main() {
+    int age;
+    char hasCriminalRecord;
+   std::cout << "Enter your age: ";
+    std::cin >> age;
+  if (age >= 18) 
+  {
+      std::cout << "Do you have a criminal record? (Y/N): ";
+        std::cin >> hasCriminalRecord;
+      if (hasCriminalRecord == 'N' || hasCriminalRecord == 'n') {
+            std::cout << "You are eligible to vote. Cast your vote responsibly!" << std::endl;
+        }
+        else
+        {
+            std::cout << "Sorry, you are not eligible to vote due to a criminal record." << std::endl;
+        }
+    }
+    else 
+    {
+        std::cout << "Sorry, you are not eligible to vote as you are under 18 years old." << std::endl;
+    }
+
+    return 0;
+}
+**Scenario 9: Temperature Classification**
+Write a program that classifies the temperature into different categories (cold, moderate, hot). Use
+relational operators to compare the temperature input and categorize it accordingly.
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+ double temperature;
+ cout << "Enter the temperature: ";
+    cin >> temperature;
+  if (temperature < 10) {
+        cout << "Cold" << endl;
+    } 
+    else if (temperature >= 10 && temperature <= 30) {
+        cout << "Moderate" << endl;
+    }
+    else {
+        cout << "Hot" << endl;
+    }
+
+    return 0;
+}
+**Scenario 10: Exam Pass/Fail**
+Develop a program that determines whether a student passes or fails an exam based on the input
+marks. If the student scores 40% or more, consider it a pass; otherwise, mark it as a fail.
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+   double marks;
+   cout << "Enter the marks: ";
+    cin >> marks;
+  if (marks >= 40) 
+  {
+        cout << "Pass" << endl;
+    } 
+    else
+    {
+        cout << "Fail" << endl;
+    }
+
+    return 0;
+}
+**Scenario 11: Library Fine Calculation**
+Implement a program for a library that calculates the fine for overdue books. If a book is returned
+after the due date, charge a base fine. If it's returned more than a week late, apply an additional fee.
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+ const int baseFine = 5; 
+    const int additionalFine = 2; 
+    int daysLate;
+  cout << "Enter the number of days the book is late: ";
+    cin >> daysLate;
+    int fine = baseFine;
+    if (daysLate > 7)
+    {
+        fine += additionalFine * (daysLate - 7);
+    }
+  if (fine > 0)
+  {
+        cout << "The fine for the overdue book is $" << fine << endl;
+    }
+    else 
+    {
+        cout << "No fine for the book." << endl;
+    }
+
+    return 0;
+}
+**Scenario 12: Product Discount**
+Design a program for an online store that applies different discounts based on the user's purchase
+history. If a user has made more than 5 purchases, offer a 15% discount; otherwise, provide a
+standard 10% discount.
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+  const double standardDiscountRate = 0.10;  
+    const double highPurchaseDiscountRate = 0.15; 
+    int numOfPurchases;
+    double totalPrice;
+   cout << "Enter the number of purchases: ";
+    cin >> numOfPurchases;
+  cout << "Enter the total price of your purchase: $";
+    cin >> totalPrice;
+   double discountRate;
+    if (numOfPurchases > 5)
+    {
+        discountRate = highPurchaseDiscountRate;
+    }
+    else
+    {
+        discountRate = standardDiscountRate;
+    }
+   double discountAmount = totalPrice * discountRate;
+    double finalPrice = totalPrice - discountAmount;
+     cout << "Discount applied: " << (discountRate * 100) << "%" << endl;
+    cout << "Discount amount: $" << discountAmount << endl;
+    cout << "Final price after discount: $" << finalPrice << endl;
+
+    return 0;
+}
+Scenario 13: Event Invitation
+Create a program for an exclusive event. Users are invited if they are either VIP guests or have
+purchased a premium ticket. Use the OR logical operator to check the conditions and grant access
+accordingly.
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+ bool isVipGuest, hasPremiumTicket;
+  cout << "Are you a VIP guest? (1 for yes, 0 for no): ";
+    cin >> isVipGuest;
+  cout << "Do you have a premium ticket? (1 for yes, 0 for no): ";
+    cin >> hasPremiumTicket;
+ if (isVipGuest || hasPremiumTicket)
+ {
+        cout << "You are invited to the exclusive event!" << endl;
+    }
+    else
+    {
+        cout << "Sorry, you are not invited to the event." << endl;
+    }
+
+    return 0;
+}
+Scenario 14: Password Recovery
+Design a simple password recovery system. Allow access if the user provides either the correct
+password or a valid recovery code. Ensure that users can gain access if either condition is satisfied.
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+     string correctPassword = "secret123";
+    string recoveryCode = "recovery456";
+   string userInput;
+   cout << "Enter the password or recovery code: ";
+    cin >> userInput;
+if (userInput == correctPassword || userInput == recoveryCode) {
+        cout << "Access granted! Welcome back." << endl;
+    }
+    else 
+    {
+        cout << "Access denied! Please enter a valid password or recovery code." << endl;
+    }
+
+    return 0;
+}
